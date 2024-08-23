@@ -126,7 +126,6 @@ function showLoader() {
 window.addEventListener('load', showLoader);
 
 function startActivity(activity) {
-  alert(`Starting activity: ${activity}`);
   const popup = document.getElementById('activity-popup');
   popup.style.display = 'none';
   const meditationMusic = document.getElementById("meditationMusic");
