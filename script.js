@@ -251,3 +251,17 @@ window.onclick = function(event) {
 }
 
 updateMoodHistory();
+
+const {
+  bg_color,
+  text_color,
+  hint_color,
+  button_color,
+  button_text_color,
+  secondary_bg_color,
+} = Telegram.WebApp.themeParams;
+
+
+const tg = window.Telegram.WebApp;
+tg.isExpanded;
+tg.expand();
