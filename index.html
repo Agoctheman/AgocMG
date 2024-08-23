@@ -1,0 +1,154 @@
+<html><head><script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <title>MOODSGRAM: Anytime Mood Tracker & Advisor</title>
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-content">
+      <p>Take a moment to smile.</p>
+      <img src="funny1.jpg" alt="Funny image" class="funny-image">
+      <div class="circle-loader"></div>
+    </div>
+  </div>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="moodsgram.png" alt="MoodGram Logo">
+        <h1>MoodsGram<br>
+          Anytime Tracker & Advisor</h1>
+      </div>
+      <button class="mode-switch" onclick="toggleDarkMode()">Switch Mode</button>
+    </header>
+    <div class="content">
+      <div class="column mood-tracker">
+        <h2>How are you feeling?</h2>
+        <div class="mood-buttons">
+          <button class="mood-button" data-mood="1" onclick="logMood(1, 'Sad')">😢</button>
+          <button class="mood-button" data-mood="2" onclick="logMood(2, 'Confused')">😔</button>
+          <button class="mood-button" data-mood="3" onclick="logMood(3, 'Neutral')">😐</button>
+          <button class="mood-button" data-mood="4" onclick="logMood(4, 'Content')">😊</button>
+          <button class="mood-button" data-mood="5" onclick="logMood(5, 'Happy')">😃</button>
+        </div>
+        <p id="current-mood">Current Mood: Not set</p>
+      </div>
+      <div class="column mood-advice">
+        <h2>Mood Advice</h2>
+        <p id="advice">Select a mood to get advice.</p>
+        <h3>Suggested Activities: Tap for Details</h3>
+        <ul id="activities"></ul>
+        <p id="scripture"></p>
+      </div>
+      <div class="column mood-history">
+        <h2>Mood History <button id="reset-history" onclick="resetMoodHistory()">Reset</button></h2>
+        <ul id="mood-history"></ul>
+      </div>
+    </div>
+    <button class="disclaimer-button" onclick="showDisclaimer()">Disclaimer</button>
+  </div>
+  <div id="disclaimerModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Disclaimer</h2>
+      <p>The information provided by MoodsGram is for informational purposes only and does not replace medical or psychological advice. If you're experiencing severe or persistent mood issues, please consult with a qualified healthcare professional.</p>
+    </div>
+  </div>
+  <div id="activity-popup" class="popup">
+    <!-- Generic Popup Content - Will be used for all activities except meditation -->
+    <div class="popup-content">
+      <img src="" alt="Activity Image" class="popup-image">
+      <p class="popup-text"></p>
+      <button class="popup-button">Start Activity</button>
+    </div>
+  <!-- Meditation Popup Content -->
+  <div id="meditation-popup" class="popup-content" style="display: none;">
+    <img src="meditation.jpg" alt="Meditation Image" class="popup-image">
+    <p class="popup-text">Practice mindful meditation for 10 minutes</p>
+    <button id="pause-music" class="popup-button" style="display: none;">Pause</button>
+    <button id="stop-music" class="popup-button" style="display: none;">Stop</button>
+    <div id="timer"></div>
+    <button id="start-meditation" class="popup-button">Start Activity</button> 
+  </div>
+    <!-- Gratitude Popup Content -->
+    <div id="gratitude-popup" class="popup-content" style="display: none;">
+      <img src="writing.jpg" alt="Gratitude Image" class="popup-image">
+      <p class="popup-text">Write a gratitude journal listing 3 things you're thankful for</p>
+      <textarea id="gratitude-journal" placeholder="Write your gratitude here..." style="width: 300px; height: 200px;"></textarea>
+      <button id="start-gratitude" class="popup-button">Save</button> 
+    </div>
+  <!-- Walk Popup Content -->
+  <div id="walk-popup" class="popup-content" style="display: none;">
+    <img src="walking.jpg" alt="Walk Image" class="popup-image">
+    <p class="popup-text-walk">Go for a 15-minute walk in nature</p>
+    <div class="stretching-routine">
+        <h3>When you go out...</h3>
+
+        <p><strong>1. Watch birds:</strong>Observe and identify different bird species.</p>
+        <img src="2birds.jpg" alt="watch birds">
+
+        <p><strong>2. Take photographs:</strong> Capture scenic landscapes or interesting natural details.</p>
+        <img src="2photo.jpg" alt="Photography">
+
+        <p><strong>3. Practice Mindfulness:</strong> Take deep breaths and appreciate the environment's tranquility.</p>
+        <img src="2mindfulness.jpg" alt="Mindfulness">
+
+        <p><strong>4. Engage in Foraging:</strong> Look for edible plants, herbs, or mushrooms.</p>
+        <img src="2foraging.png" alt="Foraging">
+    </div>
+  </div>
+    <!-- Breathing Popup Content -->
+    <div id="breathe-popup" class="popup-content" style="display: none;">
+      <img src="breathing.jpg" alt="Breathe Image" class="popup-image">
+      <p class="popup-text">Try a simple breathing exercise. <h1>Try a Simple Breathing Exercise</h1>
+      <p>Take a moment to relax and center yourself with a simple breathing technique. Follow these easy steps:</p>
+      <p><strong>1. Inhale</strong> slowly through your nose for a count of 4.</p>
+      <p><strong>2. Hold</strong> your breath gently for a count of 4.</p>
+      <p><strong>3. Exhale</strong> slowly through your mouth for a count of 4.</p>
+      <p>Repeat this cycle a few times, and feel the stress melt away. It's a quick and effective way to calm your mind and refresh your body, no matter where you are.</p>
+  </div>
+    <!-- Music Popup Content -->
+      <div id="music-popup" class="popup-content" style="display: none;">
+        <img src="music.jpg" alt="Music Image" class="popup-image">
+        <p class="popup-text">Listen to your favorite uplifting music.<h3>Key Benefits of listening to your favorite uplifting music</h3>
+      <h3><ul>
+          <li>Enhances Mood</li>
+          <li>Reduces Stress</li>
+          <li>Boosts Energy</li>
+          <li>Improves Focus</li>
+      </ul></h3></p>
+    </div>
+    <!-- Stretching Popup Content -->
+      <div id="stretch-popup" class="popup-content" style="display: none;">
+        <img src="stretching.jpg" alt="Stretch Image" class="popup-image">
+        <p class="popup-text">Do a quick 5-minute stretching routine.</p>
+        <div class="stretching-routine">
+            <h3>Perform This Routine</h3>
+
+            <p><strong>1. Neck Stretch:</strong> Tilt head to each side, hold 15-20s.</p>
+            <img src="1neck-tilt.png" alt="Neck Stretch">
+
+            <p><strong>2. Shoulder Rolls:</strong> Roll shoulders forward and backward, 15s each.</p>
+            <img src="1shoulder-roll.jpeg" alt="Shoulder Rolls">
+
+            <p><strong>3. Arm Stretch:</strong> Extend arm across chest, hold 15-20s each side.</p>
+            <img src="1arm-stretch.jpg" alt="Arm Stretch">
+
+            <p><strong>4. Side Stretch:</strong> Raise arm, lean to the opposite side, hold 15-20s each side.</p>
+            <img src="1side-bend.jpg" alt="Side Stretch">
+
+            <p><strong>5. Hamstring Stretch:</strong> Reach toward toes, hold 15-20s each side.</p>
+            <img src="1hamstring_Stretches.jpg" alt="Hamstring Stretch">
+
+            <p><strong>6. Calf Stretch:</strong> Press back heel into the floor, hold 15-20s each side.</p>
+            <img src="1wall+calf+stretch.jpg" alt="Calf Stretch">
+        </div>
+    </div>
+  <audio id="meditationMusic" src="relaxing-meditation-231762.mp3" loop="loop"> </audio>
+  <footer>
+    <p>&copy; 2024 MoodsGram. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+  </body></html>
