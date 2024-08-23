@@ -1,2 +1,2 @@
-# AgocMG
-Your Mood Matters
+# MoodGram
+Your Mood Matters.
