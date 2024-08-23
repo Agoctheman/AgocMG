@@ -1,2 +1,2 @@
-# MoodGram
+# MoodsGram
 Your Mood Matters.
