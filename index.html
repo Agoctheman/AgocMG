@@ -149,7 +149,16 @@
       <div id="call-popup" class="popup-content" style="display: none;">
         <img src="phonecall.jpg" alt="Call Image" class="popup-image">
         <p class="popup-text"><strong>Call a friend or family to share your good mood.</strong></p>
-        <button id="openContactsBtn" class="popup-button">Open Contacts</button>
+        <p>Type a message or tap generate to display an exciting message. Share this message with your family and friends</p>
+        <div id="message-container" contenteditable="true">Your message will appear here!</div>
+
+        <div class="button-container">
+            <button id="generate-btn">Generate</button>
+            <button id="share-btn" disabled>
+                Share
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Share Icon">
+            </button>
+        </div>
     </div>
     <!-- Plan Popup Content -->
       <div id="plan-popup" class="popup-content" style="display: none;">
