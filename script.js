@@ -269,19 +269,39 @@ window.onclick = function(event) {
 
 updateMoodHistory();
 
-document.getElementById('openContactsBtn').addEventListener('click', async () => {
-    if ('contacts' in navigator && 'select' in navigator.contacts) {
-        try {
-            const props = ['name', 'email', 'tel'];
-            const opts = {multiple: true}; // To allow multiple contacts selection
-            const contacts = await navigator.contacts.select(props, opts);
-            console.log(contacts); // Handle the selected contacts here
-        } catch (err) {
-            console.error('Error selecting contacts: ', err);
-        }
-    } else {
-        alert('Contact Picker API is not supported on this browser.');
-    }
+const messageContainer = document.getElementById('message-container');
+const generateBtn = document.getElementById('generate-btn');
+const shareBtn = document.getElementById('share-btn');
+
+// List of pre-written motivational messages
+const excitingMessages = [
+    "Believe in yourself, and magic will happen!",
+    "Success is just around the corner—keep going!",
+    "Every step forward is progress—don’t stop now!",
+    "You are stronger than any challenge!",
+    "The best is yet to come—stay focused!"
+];
+
+// Your defined Telegram bot address
+const telegramBotAddress = "https://t.me/MoodsGram_bot";
+
+// Function to generate a random exciting message
+generateBtn.addEventListener('click', () => {
+    const randomIndex = Math.floor(Math.random() * excitingMessages.length);
+    messageContainer.innerText = excitingMessages[randomIndex];
+    shareBtn.disabled = false;
+});
+
+// Function to share the message on Telegram with the bot address
+shareBtn.addEventListener('click', () => {
+    const message = encodeURIComponent(`${messageContainer.innerText}\n\nSent with love. Your Mood Matters, access our bot here: ${telegramBotAddress}`);
+    const telegramUrl = `https://t.me/share/url?url=${message}`;
+    window.open(telegramUrl, '_blank');
+});
+
+// Enable the share button if user writes their own message
+messageContainer.addEventListener('input', () => {
+    shareBtn.disabled = messageContainer.innerText.trim().length === 0;
 });
 
 const {
