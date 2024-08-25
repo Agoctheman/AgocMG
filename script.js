@@ -294,7 +294,7 @@ generateBtn.addEventListener('click', () => {
 
 // Function to share the message on Telegram with the bot address
 shareBtn.addEventListener('click', () => {
-    const message = encodeURIComponent(`${messageContainer.innerText}\n\nSent with love. Your Mood Matters, access our bot here: ${telegramBotAddress}`);
+    const message = encodeURIComponent(`${messageContainer.innerText}\n\nYour Mood Matters, access our bot here: ${telegramBotAddress}`);
     const telegramUrl = `https://t.me/share/url?url=${message}`;
     window.open(telegramUrl, '_blank');
 });
