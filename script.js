@@ -95,22 +95,40 @@ function showActivityPopup(activity) {
     document.getElementById('gratitude-popup').style.display = 'block';
     // Set the click handler for the "Start Activity" button in the gratitude popup
     document.getElementById('start-gratitude').onclick = () => startActivity(activity);
+    
   } else if (activity === "Go for a 15-minute walk in nature") {
     document.getElementById('walk-popup').style.display = 'block';
     // Set the click handler for the "Start Activity" button in the walk popup
     document.getElementById('start-walk').onclick = () => startActivity(activity);
+    
     } else if (activity === "Try a simple breathing exercise: inhale for 4 counts, hold for 4, exhale for 4") {
       document.getElementById('breathe-popup').style.display = 'block';
       // Set the click handler for the "Start Activity" button in the breathe popup
       document.getElementById('start-breathe').onclick = () => startActivity(activity);
+    
     } else if (activity === "Listen to your favorite uplifting music") {
       document.getElementById('music-popup').style.display = 'block';
       // Set the click handler for the "Start Activity" button in the music popup
-      document.getElementById('start-music').onclick = () => startActivity(activity);
+    
     } else if (activity === "Do a quick 5-minute stretching routine") {
       document.getElementById('stretch-popup').style.display = 'block';
-      // Set the click handler for the "Start Activity" button in the music popup
-      document.getElementById('start-stretch').onclick = () => startActivity(activity);
+      // Set the click handler for the "Start Activity" button in the stretch popup
+    
+    } else if (activity === "Call a friend or family member to share your good mood") {
+      document.getElementById('call-popup').style.display = 'block';
+      // Set the click handler for the "Start Activity" button in the stretch popup
+
+    } else if (activity === "Start planning a fun activity or trip") {
+      document.getElementById('plan-popup').style.display = 'block';
+      // Set the click handler for the "Start Activity" button in the stretch popup
+
+    } else if (activity === "Volunteer or help someone in need") {
+      document.getElementById('volunteer-popup').style.display = 'block';
+      // Set the click handler for the "Start Activity" button in the stretch popup
+
+    } else if (activity === "Learn something new - watch an educational video or start an online course") {
+      document.getElementById('learn-popup').style.display = 'block';
+      // Set the click handler for the "Start Activity" button in the stretch popup
   }
   // ... Add more conditions for other activities ...
 }
@@ -250,6 +268,21 @@ window.onclick = function(event) {
 }
 
 updateMoodHistory();
+
+document.getElementById('openContactsBtn').addEventListener('click', async () => {
+    if ('contacts' in navigator && 'select' in navigator.contacts) {
+        try {
+            const props = ['name', 'email', 'tel'];
+            const opts = {multiple: true}; // To allow multiple contacts selection
+            const contacts = await navigator.contacts.select(props, opts);
+            console.log(contacts); // Handle the selected contacts here
+        } catch (err) {
+            console.error('Error selecting contacts: ', err);
+        }
+    } else {
+        alert('Contact Picker API is not supported on this browser.');
+    }
+});
 
 const {
   bg_color,

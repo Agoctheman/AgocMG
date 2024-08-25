@@ -419,6 +419,7 @@ footer {
   transform: translateX(-50%); /* Adjust for centering */
   width: 300px; /* Set the width to 300px */
   text-align: center; /* Center the content */
+  color: black;
 }
 
 .stretching-routine {
@@ -428,6 +429,7 @@ footer {
   border-radius: 8px;
   background-color: #fff;
   margin: auto;
+  color: black;
 }
 
 .stretching-routine h3 {
