@@ -449,7 +449,7 @@ footer {
 }
 
 #message-container {
-  width: 300px;
+  width: 230px;
   height: 100px;
   border: 2px solid #9f40a0;
   padding: 10px;
@@ -460,6 +460,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 .button-container {
   display: flex;
