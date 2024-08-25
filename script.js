@@ -275,11 +275,11 @@ const shareBtn = document.getElementById('share-btn');
 
 // List of pre-written motivational messages
 const excitingMessages = [
-    "Believe in yourself, and magic will happen!",
-    "Success is just around the corner—keep going!",
-    "Every step forward is progress—don’t stop now!",
-    "You are stronger than any challenge!",
-    "The best is yet to come—stay focused!"
+    "Believe in yourself, and magic will happen! (Sent with love)",
+    "Success is just around the corner—keep going! (Sent with love)",
+    "Every step forward is progress—don’t stop now! (Sent with love)",
+    "You are stronger than any challenge! (Sent with love)",
+    "The best is yet to come—stay focused (Sent with love)!"
 ];
 
 // Your defined Telegram bot address
