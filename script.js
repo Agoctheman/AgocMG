@@ -304,6 +304,10 @@ messageContainer.addEventListener('input', () => {
     shareBtn.disabled = messageContainer.innerText.trim().length === 0;
 });
 
+document.getElementById("join-btn").addEventListener("click", function() {
+    window.open("https://t.me/moods_gram", "_blank");
+});
+
 const {
   bg_color,
   text_color,
