@@ -305,7 +305,7 @@ messageContainer.addEventListener('input', () => {
 });
 
 document.getElementById("join-btn").addEventListener("click", function() {
-    window.open("https://t.me/moods_gram", "_blank");
+    window.open("https://t.me/moodsgram_community", "_blank");
 });
 
 const {
