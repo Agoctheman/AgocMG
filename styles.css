@@ -486,3 +486,18 @@ button:disabled {
   height: 20px;
   margin-left: 5px;
 }
+
+#join-btn {
+  background-color: #0088cc;
+  color: white;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#join-btn:hover {
+  background-color: #006699;
+}
